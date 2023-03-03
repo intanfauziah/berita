@@ -1,0 +1,62 @@
+<div class="content">
+    <div class="p-col">
+        <!-- Komponen Form -->
+        <p-panel>
+            <form [formGroup]="ruhForm">
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="ui-g-2">
+                                Judul
+                            </div>
+                            <div class="ui-g-2">
+                                <input id="input" type="text" size="30" pInputText formControlName="judul"
+                                    maxlength="50" />
+                            </div>
+                            <div class="ui-g-4">
+                                <p-message severity="error" text="Judul harus diisi!"
+                                    *ngIf="!ruhForm.controls['judul'].valid && ruhForm.controls['judul'].dirty"></p-message>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-2">
+                                Kategori
+                            </div>
+                            <div class="ui-g-4">
+                                <input id="input" type="text" size="30" pInputText formControlName="kategori"
+                                    oninput="this.value = this.value.toUpperCase()" />
+                            </div>
+                            <div class="ui-g-4">
+                                <p-message severity="error" text="Kategori harus diisi"
+                                    *ngIf="!ruhForm.controls['kategori'].valid && ruhForm.controls['kategori'].dirty"></p-message>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ui-g-12">
+                                <div class="ui-g-2">
+                                    Isi
+                                </div>
+                            </div>
+                            <div class="ui-g-12">
+                                <div class="ui-g-4">
+                                    <textarea rows="5" cols="60" pInputTextarea [autoResize]="true"
+                                    id="input" type="text" formControlName="isi"></textarea>
+                                </div>
+                                <div class="ui-g-4">
+                                    <p-message severity="error" text="Isi harus diisi"
+                                        *ngIf="!ruhForm.controls['isi'].valid && ruhForm.controls['isi'].dirty"></p-message>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="p-grid" style="margin-top:10px">
+                <div class="p-col-12 p-sm-12 p-md-12 p-lg-12" style="text-align: right">
+                  <button pButton type="button" label="Simpan" icon="pi pi-save" (click)="simpan()"></button> &nbsp;
+                  <button pButton type="button" label="Batal" (click)="batal()"></button>
+                </div>
+              </div>
+        </p-panel>
+    </div>
+</div>

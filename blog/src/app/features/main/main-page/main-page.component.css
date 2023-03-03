@@ -1,0 +1,21 @@
+.content{
+    padding: 10 px;
+    margin-top: 30px;
+    margin-left: 200px;
+}
+/* panel{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+} */
+.p-panel-header {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+.p-card{
+    font-size: 18px;
+}
+.p-card-header{
+    font-size: 24px;
+}
+

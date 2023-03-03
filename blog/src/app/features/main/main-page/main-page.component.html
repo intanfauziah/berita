@@ -1,0 +1,13 @@
+<div class="content">
+    <p-card [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+        <ng-template pTemplate="header" style="font-size: 24px;">
+            <h2>Judul 1</h2>
+        </ng-template>
+            <div>
+                {{(readMore) ? isi1 : isi1 | slice:0:100}} <span *ngIf="!readMore">...</span> <br>
+                <a *ngIf="!readMore" (click)="readMore=true" style="color: blue;">[Read More]</a>
+                <a *ngIf="readMore" (click)="readMore=false" style="color: blue;">[Read Less]</a>
+            </div>
+    </p-card>
+</div>
+

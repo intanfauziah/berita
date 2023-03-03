@@ -1,0 +1,329 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-size: 16px;
+  }
+  .layout-wrapper .layout-main {
+    padding: 70px 15px 15px 15px;
+  }
+  
+  body .ui-widget-content, .ui-widget, body .ui-widget .ui-widget {
+    font-size: 12px;
+  }
+  .p-grid {
+    margin-top: 0em;
+    margin-right: 0em;
+  }
+  .p-col-1, .p-col-2, .p-col-3, .p-col-4, .p-col-5, .p-col-6, .p-col-7, .p-col-8, .p-col-9, .p-col-10, .p-col-11, .p-col-12 {
+    /* padding: .2em; */
+    padding: .15em 0 .15em .5em;
+  }
+  .ui-g {
+    margin-top: 0em;
+  }
+  .ui-g-1, .ui-g-2, .ui-g-3, .ui-g-4, .ui-g-5, .ui-g-6, .ui-g-7, .ui-g-8, .ui-g-9, .ui-g-10, .ui-g-11, .ui-g-12 {
+    /* padding: .2em; */
+    padding: .15em 0 .15em .5em;
+  }
+  /*.layout-main {
+     background: url(assets/img/background_sakti2.png) no-repeat center top;
+    background-size: cover;
+    height: 650px;
+  }*/
+  .ui-card-body {
+    box-shadow: none;
+  }
+  
+  .historyLogin{
+    float: left;
+    margin-top: 8px;
+    margin-left: 24px;
+    position: relative;
+    color: #fff;
+    font-size: 11px;
+  }
+  
+   .layout-wrapper .topbar .topbar-right #menu-button {
+    width: 24px;
+    height: 24px;
+    /* left: 284px; */
+    margin-top: 5px;
+  }
+  
+  .layout-wrapper .topbar .topbar-right #menu-button i {
+    font-size: 24px;
+  }
+  .layout-wrapper .layout-menu li a {
+    display: block;
+    padding: 7px 10px 3px 3px;
+  }
+  
+  .layout-wrapper .layout-menu li a i.menuitem-toggle-icon {
+    font-size: 12px;
+  }
+  
+  .layout-wrapper .layout-menu li a span {
+    display: contents;
+  }
+  .layout-wrapper .layout-menu li a i:first-child {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  .layout-wrapper .layout-menu li ul li a {
+    padding: 3px 15px 3px 20px;
+  }
+  .layout-wrapper .layout-menu li ul li a i:first-child {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  .layout-wrapper .layout-menu li ul li ul li a {
+    padding-left: 38px;
+  }
+  .layout-wrapper .layout-menu {
+    font-size: 12px;
+  }
+  
+  .layout-wrapper.menu-layout-static.layout-menu-static-inactive .layout-menu-container {
+    margin-left: -305px;
+  }
+  body .ui-table .ui-table-thead > tr > th, body .ui-table .ui-table-tbody > tr > td, body .ui-table .ui-table-tfoot > tr > td {
+    padding: 3px 2px;
+    font-size: 11px;
+  }
+  body .ui-table .ui-table-thead > tr > th, body .ui-table .ui-table-tfoot > tr > td {
+    color: #666;
+    background:  #ddd;
+  }
+  /* body .ui-messages.ui-messages-warn { */
+    /* background-color: #fcf8e3; */
+    /* background-color: #cc0000; */
+    /* color: #8a6d3b; */
+    /* color: #fff; */
+  /* } */
+  body .ui-treetable .ui-treetable-tbody > tr > td {
+    padding: 3px 8px;
+  }
+  body .ui-treetable p-treeTableToggler {
+    margin-left: -20px;
+  }
+  body .ui-table .ui-paginator {
+    margin: 0;
+  }
+  body .ui-treetable .ui-treetable-tbody > tr > td {
+    padding: 3px 8px;
+  }
+  
+  .ui-tabview.ui-tabview-top .ui-tabview-nav li a {
+    padding: 5px 10px;
+    font-size: 1em;
+  }
+  
+  .ui-unselectable-text {
+    margin-left: 15px;
+  }
+  
+  .ui-g.form-group > div {
+    padding: 5px;
+  }
+  
+  .ui-paginator .ui-paginator-pages {
+    height: auto;
+  }
+  
+  .tableJeje  .ui-paginator {
+    text-align : right !important;
+  }
+  
+  .tableJeje  p-dropdown {
+    position: absolute !important;
+    /* //float: left !important; */
+    left: 10px !important;
+  }
+  
+  .tableJeje  p-dropdown::before {
+    content : 'Per page :';
+  }
+  
+  .tableJeje  p-dropdown::after {
+    content : '';
+  }
+  
+  .buttonJeje app-crud-button .ui-toolbar {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 10px 0px !important;
+  }
+  
+  body .ui-tabview.ui-tabview-top .ui-tabview-nav li a, body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li a, body .ui-tabview.ui-tabview-left .ui-tabview-nav li a, body .ui-tabview.ui-tabview-right .ui-tabview-nav li a {
+    padding: 8px 20px;
+    color: #0782cf;
+    font-weight: bold;
+  }
+  body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active, body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active, body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active, body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
+    background-color: #eef2f6;
+  }
+  
+  .ui-tabview-nav .ui-state-disabled a {
+    color: grey !important;
+  }
+  
+  .ui-tabview-nav .ui-state-disabled  {
+    outline: none !important;
+  }
+  
+  .card {
+    padding: 0;
+  }
+  
+  body .ui-fieldset {
+    /* padding: 0 0 0.5em 0; */
+    margin: 0;
+    margin-top: 5px;
+  }
+  body .ui-fieldset .ui-fieldset-content {
+    padding: 5px 10px;
+  }
+  .ui-fieldset-toggleable .ui-fieldset-legend a {
+    padding: .2em 1em .3em .5px;
+  }
+  body .ui-fieldset .ui-fieldset-legend {
+    font-weight: bold;
+    font-size: 100%;
+    padding: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+  }
+  body .ui-button.ui-button-text-only .ui-button-text {
+    padding: 3px 8px;
+  }
+  body .ui-button.ui-button-text-icon-left .ui-button-text {
+    padding: 3px 25px;
+  }
+  body .ui-inputtext .ui-button.ui-button-text-only .ui-button-text {
+    padding: 0 12px;
+  }
+  .ui-fluid .ui-inputtext {
+    font-size: 12px;
+  }
+  body .ui-inputtext {
+   padding: 3px 7px;
+  }
+  textarea {
+    /* width: 100%;  */
+    border: thin solid #ccc;
+    border-radius: 4px;
+  }
+  
+  body .ui-button.ui-button-icon-only .ui-button-text {
+    padding: 3px 6px;
+  }
+  
+  body .ui-dialog .ui-dialog-titlebar {
+    padding: .5em 1em;
+  }
+  
+  th {
+    background: #4D9FFF;
+  }
+  
+  .layout-wrapper .topbar .topbar-right #topbar-menu-button i {
+    font-size: 30px;
+  }
+  
+  .layout-wrapper .layout-footer {
+    padding: 5px 20px;
+  }
+  
+  .layout-footer {
+    bottom: 0px;
+    position: fixed;
+    min-width: 100%;
+    margin: 0 auto;
+    background: #fff;
+  }
+  .ui-fluid .ui-button {
+    width: auto;
+  }
+  
+  .ui-toast-message {
+    white-space: pre-wrap;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  #dp_widget_container iframe[name="widget_trigger_iframe"] {
+    display: none !important;
+  }
+  
+  .layout-wrapper .layout-footer .footer-text-right img {
+    cursor: pointer;
+    height: 30px;
+    opacity: 0.7;
+  }
+  
+  .layout-wrapper .layout-footer .footer-text-right img:hover,
+  .layout-wrapper .layout-footer .footer-text-right img:active,
+  .layout-wrapper .layout-footer .footer-text-right img:focus {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.7s ease;
+  }
+  
+  
+  @media (min-width: 1025px) {
+    .layout-wrapper.menu-layout-static .layout-footer {
+      padding-right: 250px;
+      transition: all 0.3s;
+    }
+  
+    .layout-wrapper.menu-layout-static.layout-menu-static-inactive .layout-footer {
+      padding-right: 20px;
+      transition: all 0.3s;
+    }
+  }
+  
+  ul.search-sidebar {
+    position: relative;
+  }
+  
+  ul.search-sidebar li {
+    position: relative;
+    list-style: none;
+    display: table;
+    margin: 10px 0;
+    padding-right: 5px;
+    cursor: pointer;
+  }
+  
+  ul.search-sidebar li::before {
+    content: '';
+    position: absolute;
+    top:2px;
+    left:-30px;
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border-radius: 34px;
+    transition: background 0.5s, width 0.5s;
+    border: 2px solid #2E76EE;
+    box-sizing: border-box;
+  }
+  
+  ul.search-sidebar li:hover:before {
+    background: #2E76EE;
+    transition-delay: 0s, 0.5s;
+  }
+  
+  ul.search-sidebar li a{
+    position: relative;
+    z-index: 10;
+    padding: 5px 10px;
+  }
+  
+  .layout-wrapper .layout-menu-container::-webkit-scrollbar {
+    display: none;
+  }
