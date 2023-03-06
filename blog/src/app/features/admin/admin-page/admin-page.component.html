@@ -2,14 +2,15 @@
     <div class="ui-fluid">
 
         <p-panel [toggleable]="false" [style]="{'margin-bottom':'20px'}">
-          <div class="p-grid pt-3">
+          <div class="p-grid pt-2">
             <div class="p-col-12 p-sm-12 p-md-12 p-lg-12">
-              <p-table [columns]="columns" [value]="dataLists" styleClass="p-datatable-gridlines">
-                <!-- <ng-template pTemplate="colgroup" let-columns>
+              <p-table [columns]="columns" [value]="dataLists" styleClass="p-datatable-gridlines"selectionMode="single" 
+              [scrollable]="true" scrollHeight="200px" [resizableColumns]="true" [(selection)]="selectedData">
+                <ng-template pTemplate="colgroup" let-columns>
                   <colgroup>
                     <col *ngFor="let col of columns" [style.width]="col.width">
                   </colgroup>
-                </ng-template> -->
+                </ng-template>
                 <ng-template pTemplate="header" let-columns>
                   <tr>
                     <!-- Judul -->
@@ -21,12 +22,11 @@
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                   <tr [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns" [ngClass]="col.class" class="ui-resizable-column" [ngStyle]="col.style" [style.width]="col.width">
-                      <ng-container [ngSwitch]="col.format">
-                        <ng-container *ngSwitchCase="'currency'">{{ rowData[col.field] | currency: 'IDR': ''}}</ng-container>
-                        <ng-container *ngSwitchCase="'tanggal'">{{ rowData[col.field] | date: 'dd-MM-yyyy'}}</ng-container>
-                        <ng-container *ngSwitchDefault>{{ rowData[col.field] }}</ng-container>
-                      </ng-container>
+                      {{ rowData[col.field] }}
                     </td>
+                    <!-- <td *ngFor="let col of columns" [ngClass]="col.class" class="ui-resizable-column" [ngStyle]="col.style" [style.width]="col.width">
+                      {{ rowData.kategori }}
+                    </td> -->
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage" let-columns>
@@ -51,4 +51,5 @@
       
       </div>
 </div>
-
+<p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>

@@ -5,6 +5,7 @@ import { PrimeNGModule } from 'src/app/shared/prime-ng.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RuhArtikelComponent } from './ruh-artikel/ruh-artikel.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 
 
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers: [ConfirmationService, MessageService]
 })
 export class AdminModule { }

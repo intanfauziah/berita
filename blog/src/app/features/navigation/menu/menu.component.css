@@ -40,7 +40,7 @@
 .sidebar {
     position:absolute;
     float:left;
-    /* display: flex; */
+    display: block;
     height: 100%;
     width: 150px;
     /* background-color:dodgerblue; */

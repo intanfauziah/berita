@@ -1,10 +1,10 @@
 <div class="content">
-    <p-card [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+    <p-card [style]="{'width': '25rem', 'margin-bottom': '2em'}" *ngFor="let content of contents">
         <ng-template pTemplate="header" style="font-size: 24px;">
-            <h2>Judul 1</h2>
+            <h2>{{content.judul}}</h2>
         </ng-template>
             <div>
-                {{(readMore) ? isi1 : isi1 | slice:0:100}} <span *ngIf="!readMore">...</span> <br>
+                {{(readMore) ? content.isi : content.isi | slice:0:100}} <span *ngIf="!readMore">...</span> <br>
                 <a *ngIf="!readMore" (click)="readMore=true" style="color: blue;">[Read More]</a>
                 <a *ngIf="readMore" (click)="readMore=false" style="color: blue;">[Read Less]</a>
             </div>

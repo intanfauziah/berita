@@ -35,7 +35,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import {DialogModule} from 'primeng/dialog'
 import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
-import {InputTextareaModule} from 'primeng/inputtextarea'
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {ConfirmationService} from 'primeng/api';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
 @NgModule({
   imports: [
     CommonModule,
@@ -76,6 +78,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea'
     MenubarModule,
     InputTextModule,
     InputTextareaModule,
+    ConfirmPopupModule,
   ],
   exports: [
     ButtonModule,
@@ -115,6 +118,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea'
     MenubarModule,
     InputTextModule,
     InputTextareaModule,
+    ConfirmPopupModule
   ],
   declarations: []
 })
