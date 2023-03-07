@@ -53,13 +53,24 @@
             </form>
             <div class="p-grid" style="margin-top:10px">
                 <div class="p-col-12 p-sm-12 p-md-12 p-lg-12" style="text-align: right">
-                  <button pButton type="button" label="Simpan" icon="pi pi-save" (click)="simpan()"></button> &nbsp;
-                  <button pButton type="button" label="Batal" (click)="batal()"></button>
+                  <button *ngIf="visibleSimpan" pButton type="button" label="Simpan" icon="pi pi-save" (click)="simpan($event)"></button> &nbsp;
+                  <button *ngIf="visibleBatal" pButton type="button" label="Batal" (click)="batal()"></button> &nbsp;
+                  <button pButton type="button" label="Keluar" (click)="keluar()"></button>
                 </div>
               </div>
-              <p-confirmDialog header="Confirmation" icon="fa fa-exclamation-triangle" width="425"></p-confirmDialog>
         </p-panel>
     </div>
 </div>
-<p-confirmDialog header="Konfirmasi" icon="pi pi-exclamation-triangle" [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-<router-outlet></router-outlet>
+
+<div class="layout-main">
+    <p-messages key="main-message"></p-messages>
+    <p-toast position="top-right" key="main-toast"></p-toast>
+    <p-confirmDialog acceptLabel="Ya" rejectLabel="Tidak" icon="pi pi-exclamation-triangle"
+      key="noncloseable-confirm-dialog" [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+    <p-confirmDialog acceptLabel="Ya" rejectLabel="Tidak" icon="pi pi-exclamation-triangle" key="main-confirm-dialog"
+      [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+    <p-confirmDialog acceptLabel="Oke" [rejectVisible]="false" icon="pi pi-exclamation-triangle" key="ok-confirm-dialog"
+      [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+    <router-outlet></router-outlet>
+    <div style="height: 15px">&nbsp;</div>
+  </div>

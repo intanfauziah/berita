@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { RuhArtikelComponent } from './ruh-artikel/ruh-artikel.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 
 
 
@@ -21,6 +22,6 @@ import {ConfirmationService, MessageService} from 'primeng/api';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ConfirmationService, MessageService]
+  providers: [ConfirmationService, MessageService, DialogService]
 })
 export class AdminModule { }

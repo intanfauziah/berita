@@ -1,20 +1,10 @@
 .content{
     padding: 10 px;
     margin-top: 40px;
-    margin-left: 200px;
+    margin-left: 250px;
+    margin-right: 15px;
+    width: 100%;
 }
-tr{
-    display: flex;
-    border: solid 1px #666;
-    /* background:  #ddd; */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-td{
-    display: table-cell;
-    /* border: solid 1px #666; */
-}
-table{
-    border-collapse: separate;
-}
+.layout-wrapper .layout-main {
+    padding: 70px 15px 15px 15px;
+  }

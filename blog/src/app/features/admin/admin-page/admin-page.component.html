@@ -1,55 +1,57 @@
 <div class="content">
-    <div class="ui-fluid">
-
-        <p-panel [toggleable]="false" [style]="{'margin-bottom':'20px'}">
-          <div class="p-grid pt-2">
-            <div class="p-col-12 p-sm-12 p-md-12 p-lg-12">
-              <p-table [columns]="columns" [value]="dataLists" styleClass="p-datatable-gridlines"selectionMode="single" 
-              [scrollable]="true" scrollHeight="200px" [resizableColumns]="true" [(selection)]="selectedData">
-                <ng-template pTemplate="colgroup" let-columns>
-                  <colgroup>
-                    <col *ngFor="let col of columns" [style.width]="col.width">
-                  </colgroup>
-                </ng-template>
-                <ng-template pTemplate="header" let-columns>
-                  <tr>
-                    <!-- Judul -->
-                    <td *ngFor="let col of columns" pResizableColumn [style.width]="col.width">
-                      {{ col.header }}
-                    </td>
-                  </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                  <tr [pSelectableRow]="rowData">
-                    <td *ngFor="let col of columns" [ngClass]="col.class" class="ui-resizable-column" [ngStyle]="col.style" [style.width]="col.width">
-                      {{ rowData[col.field] }}
-                    </td>
-                    <!-- <td *ngFor="let col of columns" [ngClass]="col.class" class="ui-resizable-column" [ngStyle]="col.style" [style.width]="col.width">
-                      {{ rowData.kategori }}
-                    </td> -->
-                  </tr>
-                </ng-template>
-                <ng-template pTemplate="emptymessage" let-columns>
-                  <tr>
-                    <td [attr.colspan]="columns.length + 1">Data Kosong</td>
-                  </tr>
-                </ng-template>
-              </p-table>
-            </div>
-          </div>
-      
-          <div class="p-grid" style="margin-top:10px">
-            <div class="p-col-12 p-sm-12 p-md-12 p-lg-12" style="text-align: right">
-              <button pButton type="button" label="Rekam" icon="pi pi-plus" (click)="rekam()"></button>
-              &nbsp;
-              <button pButton type="button" label="Ubah" icon="pi pi-pencil" (click)="ubah()"></button>&nbsp;
-              <button pButton type="button" label="Hapus" (click)="hapus()" icon="pi pi-trash"></button>&nbsp;
-              
-            </div>
-          </div>
-        </p-panel>
-      
+  <p-panel header="List Post" [toggleable]="false" [style]="{'margin-bottom':'20px', 'width':'100%'}">
+    <div class="p-grid pt-3">
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-12">
+        <p-table [columns]="columns" [value]="dataLists" [lazy]="true" [paginator]="true" [rows]="10"
+          [rowsPerPageOptions]="[10,20,30]" selectionMode="single" [scrollable]="true" scrollHeight="200px"
+          [resizableColumns]="true" [(selection)]="selectedData" styleClass="p-datatable-gridlines">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" pResizableColumn [style.width]="col.width" style="text-align: center;">
+                {{ col.header }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+              <td *ngFor="let col of columns" pResizableColumn [style.width]="col.width" [ngStyle]="col.style">
+                <ng-container [ngSwitch]="col.format">
+                  <ng-container *ngSwitchCase="'tanggal'">{{ rowData[col.field] | date: 'dd-MM-yyyy'}}</ng-container>
+                  <ng-container *ngSwitchDefault>{{ rowData[col.field] }}</ng-container>
+                </ng-container>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td [attr.colspan]="columns.length + 1">Data Kosong</td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
+    </div>
+
+    <div class="p-grid" style="margin-top:10px">
+      <div class="p-col-12 p-sm-12 p-md-12 p-lg-12" style="text-align: right">
+        <button pButton type="button" label="Lihat" (click)="lihat()"></button>&nbsp;
+        <button pButton type="button" label="Rekam" icon="pi pi-plus" (click)="rekam()"></button>&nbsp;
+        <button pButton type="button" label="Ubah" icon="pi pi-pencil" (click)="ubah($event)"></button>&nbsp;
+        <button pButton type="button" label="Hapus" (click)="hapus()" icon="pi pi-trash"></button>&nbsp;
+
+      </div>
+    </div>
+  </p-panel>
+
 </div>
-<p-toast></p-toast>
-<p-confirmPopup></p-confirmPopup>
+<div class="layout-main">
+  <p-messages key="main-message"></p-messages>
+  <p-toast position="top-right" key="main-toast"></p-toast>
+  <p-confirmDialog acceptLabel="Ya" rejectLabel="Tidak" icon="pi pi-exclamation-triangle"
+    key="noncloseable-confirm-dialog" [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+  <p-confirmDialog acceptLabel="Ya" rejectLabel="Tidak" icon="pi pi-exclamation-triangle" key="main-confirm-dialog"
+    [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+  <p-confirmDialog acceptLabel="Oke" [rejectVisible]="false" icon="pi pi-exclamation-triangle" key="ok-confirm-dialog"
+    [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+  <router-outlet></router-outlet>
+  <div style="height: 15px">&nbsp;</div>
+</div>

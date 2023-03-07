@@ -1,28 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class AdminPageComponent implements OnInit {
   dataLists: any = []
   selectedData: any;
-  private artikel = [
-                      {'judul':'1', 'kategori':'A','isi':'First Artikel'},
-                      {'judul':'2', 'kategori':'A','isi':'Second Artikel'},
-                    ];
-
   columns = [
-    { field: 'judul', header: 'Judul', width:'50%' },
-    { field: 'kategori', header: 'Kategori', width:'50%' },
+    { field: 'judul', header: 'Judul', width:'60%' },
+    { field: 'kategori', header: 'Kategori', width:'20%' },
+    { field: 'tglPost', header: 'Tanggal Post', width:'20%' , format: 'tanggal', style: {'text-align': 'center'}},
   ];
 
   constructor(  public router: Router,
                 public activeRoute: ActivatedRoute,
-                private messageService: MessageService
+                private messageService: MessageService,
+                private confirmationService: ConfirmationService
               ) { }
 
   ngOnInit(): void {
@@ -34,13 +32,7 @@ export class AdminPageComponent implements OnInit {
     this.dataLists = JSON.parse(retrievedObject)
   }
 
-  rekam(){
-    const formParams = new Map();
-    formParams.set('mode', 'rekam')
-    this.navigateTo('admin/ruh', formParams);
-  }
-
-  ubah(){
+  lihat(){
     if(!this.selectedData){
       this.messageService.add({
         key: 'main-toast',
@@ -48,6 +40,30 @@ export class AdminPageComponent implements OnInit {
         severity: 'error',
         detail: "Pilih Data Terlebih Dahulu"
       });
+      return
+    }
+    console.log(this.selectedData)
+    const formParams = new Map();
+    formParams.set('mode', 'lihat')
+    formParams.set('selectedData', this.selectedData)
+    this.navigateTo('admin/ruh', formParams);
+  }
+
+  rekam(){
+    const formParams = new Map();
+    formParams.set('mode', 'rekam')
+    this.navigateTo('admin/ruh', formParams);
+  }
+
+  ubah(event:any){
+    if(!this.selectedData){
+      this.messageService.add({
+        key: 'main-toast',
+        summary: 'Warning',
+        severity: 'error',
+        detail: "Pilih Data Terlebih Dahulu"
+      });
+      return
     }
     console.log(this.selectedData)
     const formParams = new Map();
@@ -65,6 +81,7 @@ export class AdminPageComponent implements OnInit {
         severity: 'error',
         detail: "Pilih Data Terlebih Dahulu"
       });
+      return
     }
     console.log(this.selectedData)
     let datas = JSON.parse(localStorage.getItem('objects') || '{}')

@@ -7,7 +7,7 @@ import { NavbarComponent } from './features/navigation/navbar/navbar.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'main',
     pathMatch: 'full'
   },
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
     ]
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: '' }
 ];
 
 
