@@ -74,7 +74,6 @@ export class AdminPageComponent implements OnInit {
 
   hapus(){
     if(!this.selectedData){
-      console.log('!')
       this.messageService.add({
         key: 'main-toast',
         summary: 'Warning',
@@ -84,16 +83,31 @@ export class AdminPageComponent implements OnInit {
       return
     }
     console.log(this.selectedData)
-    let datas = JSON.parse(localStorage.getItem('objects') || '{}')
-    for (let i =0; i< datas.length; i++) {
-      let data = datas[i];
-      if (data.judul == this.selectedData.judul) {
-          datas.splice(i, 1);
-      }
-  }
-    datas = JSON.stringify(datas)
-    localStorage.setItem("objects", datas)
-    this.populateList()
+    
+    this.confirmationService.confirm({
+      key: 'main-confirm-dialog',
+      header: 'Konfirmasi',
+      message: 'Hapus data?',
+      accept: () => {
+        let datas = JSON.parse(localStorage.getItem('objects') || '{}')
+        for (let i =0; i< datas.length; i++) {
+          let data = datas[i];
+          if (data.judul == this.selectedData.judul) {
+              datas.splice(i, 1);
+          }
+       } 
+        datas = JSON.stringify(datas)
+        localStorage.setItem("objects", datas)
+        this.messageService.add({
+          key: 'main-toast',
+          summary: 'Success',
+          severity: 'success',
+          detail: "Data Berhasil Dihapus"
+        });
+        this.populateList()
+      },
+      reject: () => { }
+    });
   }
 
   navigateTo(url: string, data: any) {

@@ -38,6 +38,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ConfirmationService} from 'primeng/api';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
 @NgModule({
   imports: [
     CommonModule,
@@ -79,6 +80,7 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
     InputTextModule,
     InputTextareaModule,
     ConfirmPopupModule,
+    CascadeSelectModule,
   ],
   exports: [
     ButtonModule,
@@ -118,7 +120,8 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
     MenubarModule,
     InputTextModule,
     InputTextareaModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    CascadeSelectModule
   ],
   declarations: []
 })

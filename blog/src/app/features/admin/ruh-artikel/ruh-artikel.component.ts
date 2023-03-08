@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-ruh-artikel',
@@ -18,6 +17,12 @@ export class RuhArtikelComponent implements OnInit {
     isi: new FormControl({ value: '', disabled: false }, Validators.required),
     tglPost: new FormControl({ value: new Date(), disabled: false }, Validators.required),
   });
+
+  jenisKategori = [
+    { label: '1', value: '1' },
+    { label: '2', value: '2' },
+    { label: '3', value: '3' },
+  ];
 
   mainParsedData: any;
   param = new Map();
@@ -37,8 +42,6 @@ export class RuhArtikelComponent implements OnInit {
 
   ngOnInit(): void {
     this.param = this.mainParsedData.data;
-    console.log(this.param)
-    console.log(this.param.get('mode'))
     if (this.param.get('mode') == 'edit' || this.param.get('mode') == 'lihat'){
       let selectedData = this.param.get('selectedData')
       this.ruhForm.patchValue({
@@ -54,10 +57,9 @@ export class RuhArtikelComponent implements OnInit {
       this.visibleSimpan = false;
       this.visibleBatal = false;
     }
-    console.log(this.visibleBatal)
   }
 
-  simpan(event:any){
+  simpan(){
     this.confirmationService.confirm({
       key: 'main-confirm-dialog',
       header: 'Konfirmasi',
@@ -76,23 +78,36 @@ export class RuhArtikelComponent implements OnInit {
         }
 
         this.arrObj = JSON.parse(localStorage.getItem('objects') || '{}')
+        const tanggal = new Date()
+        tanggal.setHours(0,0,0)
         this.ruhForm.patchValue({
           id : this.randomString(5),
-          tglPost: new Date()
+          tglPost: tanggal
         })
         this.arrObj.push(this.ruhForm.value)
-        console.log('53',this.arrObj)
         let objects = JSON.stringify(this.arrObj);
+        if(this.ruhForm.valid){
+          localStorage.setItem('objects', objects);
+          console.log('60',this.arrObj)
+          this.messageService.add({
+            key: 'main-toast',
+            summary: 'Success',
+            severity: 'success',
+            detail: "Data Berhasil Disimpan"
+          });
+          setTimeout(() => {
+            this.navigateTo('admin', {})
+          }, 1000);
+          
+        } else {
+          this.messageService.add({
+            key: 'main-toast',
+            summary: 'Error',
+            severity: 'error',
+            detail: "Form Belum Sesuai"
+          });
+        }
         
-        localStorage.setItem('objects', objects);
-        console.log('60',this.arrObj)
-        this.messageService.add({
-          key: 'main-toast',
-          summary: 'Success',
-          severity: 'success',
-          detail: "Data Berhasil Disimpan"
-        });
-        this.navigateTo('admin', {})
       },
       reject: () => { }
     });

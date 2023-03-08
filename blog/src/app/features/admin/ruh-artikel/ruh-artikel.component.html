@@ -11,7 +11,7 @@
                             </div>
                             <div class="ui-g-2">
                                 <input id="input" type="text" size="30" pInputText formControlName="judul"
-                                    maxlength="50" />
+                                    maxlength="50" oninput="this.value = this.value.toUpperCase()"/>
                             </div>
                             <div class="ui-g-4">
                                 <p-message severity="error" text="Judul harus diisi!"
@@ -23,8 +23,7 @@
                                 Kategori
                             </div>
                             <div class="ui-g-4">
-                                <input id="input" type="text" size="30" pInputText formControlName="kategori"
-                                    oninput="this.value = this.value.toUpperCase()" />
+                                <p-dropdown placeholder="Pilih Kategori" [options]="jenisKategori" [style]="{'width':'140px'}" formControlName="kategori" ></p-dropdown>
                             </div>
                             <div class="ui-g-4">
                                 <p-message severity="error" text="Kategori harus diisi"
@@ -53,7 +52,7 @@
             </form>
             <div class="p-grid" style="margin-top:10px">
                 <div class="p-col-12 p-sm-12 p-md-12 p-lg-12" style="text-align: right">
-                  <button *ngIf="visibleSimpan" pButton type="button" label="Simpan" icon="pi pi-save" (click)="simpan($event)"></button> &nbsp;
+                  <button *ngIf="visibleSimpan" pButton type="button" label="Simpan" icon="pi pi-save" (click)="simpan()"></button> &nbsp;
                   <button *ngIf="visibleBatal" pButton type="button" label="Batal" (click)="batal()"></button> &nbsp;
                   <button pButton type="button" label="Keluar" (click)="keluar()"></button>
                 </div>
