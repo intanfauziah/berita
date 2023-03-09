@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-ruh-artikel',
   templateUrl: './ruh-artikel.component.html',
   styleUrls: ['./ruh-artikel.component.css'],
-  providers: [ConfirmationService, MessageService]
+  providers: [ConfirmationService, MessageService, HttpClient]
 })
 export class RuhArtikelComponent implements OnInit {
   ruhForm = new FormGroup({
@@ -15,6 +16,7 @@ export class RuhArtikelComponent implements OnInit {
     judul: new FormControl({ value: '', disabled: false },Validators.compose([Validators.required, Validators.maxLength(50)])),
     kategori: new FormControl({ value: '', disabled: false }, Validators.required),
     isi: new FormControl({ value: '', disabled: false }, Validators.required),
+    gambar: new FormControl({ value: '', disabled: false }),
     tglPost: new FormControl({ value: new Date(), disabled: false }, Validators.required),
   });
 
@@ -32,6 +34,7 @@ export class RuhArtikelComponent implements OnInit {
   arrObj : any[] = [];
   visibleSimpan = true;
   visibleBatal = true;
+  uploadedFiles: any[] = []
 
   constructor(
     private confirmationService: ConfirmationService,
@@ -60,6 +63,7 @@ export class RuhArtikelComponent implements OnInit {
   }
 
   simpan(){
+    console.log(this.ruhForm.value)
     this.confirmationService.confirm({
       key: 'main-confirm-dialog',
       header: 'Konfirmasi',
@@ -153,5 +157,20 @@ export class RuhArtikelComponent implements OnInit {
     }
     return result;
   }
+
+  onUpload(event:any) {
+      for(let file of event.files) {
+          this.uploadedFiles.push(file);
+      }
+      console.log('this.uploadedFiles',this.uploadedFiles)
+
+      this.messageService.add({
+        key: 'main-toast',
+        severity: 'info', 
+        summary: 'File Uploaded', 
+        detail: ''
+      });
+  }
+  
 
 }

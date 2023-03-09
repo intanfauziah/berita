@@ -7,6 +7,7 @@ import { RuhArtikelComponent } from './ruh-artikel/ruh-artikel.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 
 
@@ -22,6 +23,6 @@ import { DialogService } from 'primeng/dynamicdialog';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ConfirmationService, MessageService, DialogService]
+  providers: [ConfirmationService, MessageService, DialogService, HttpClient]
 })
 export class AdminModule { }

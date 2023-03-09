@@ -1,0 +1,15 @@
+<div class="content">
+    <p-panel [toggleable]="false" [style]="{'margin-bottom':'20px', 'width':'100%'}">
+        <p-card [style]="{'width': '100%', 'margin-bottom': '2em'}" *ngFor="let cont of content" [header]="cont.judul">
+            <div>
+                <h5>Kategori: {{cont.kategori}}</h5>
+                <h5>Tgl Post: {{cont.tglPost | date: 'dd-MM-yyyy'}}</h5>
+            </div>
+            <br>
+            <div>
+                {{cont.isi}}
+            </div>
+        </p-card>
+    </p-panel>
+
+</div>

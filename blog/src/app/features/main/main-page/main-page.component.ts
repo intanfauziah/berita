@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -32,10 +34,17 @@ export class MainPageComponent implements OnInit {
     }];
     selectedFilter: any;
     ketFilter: any;
+    selectedData: any;
+    dataKosong: boolean = false; 
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public activeRoute: ActivatedRoute,
+    private datePipe: DatePipe
+    ) { }
 
   ngOnInit(): void {
+    this.dataKosong = false
     this.populateList('','')
   }
 
@@ -50,32 +59,61 @@ export class MainPageComponent implements OnInit {
         let batasTgl = new Date()
         let tglHariIni = new Date()
         tglHariIni.setHours(23,59,59)
+        const filterTgl = []
         if(selectedTgl == 'bulanIni'){
           var d = new Date();
           d.setFullYear(tglHariIni.getFullYear());
           d.setMonth(tglHariIni.getMonth());
           d.setDate(1);
           batasTgl = d
-          batasTgl.setHours(0,0,0)
-          this.contents = this.contents.filter(data => ((data.tglPost).setHours(0,0,0) >= batasTgl) && ((data.tglPost).setHours(0,0,0) <= tglHariIni))
+          let batas = this.datePipe.transform(batasTgl, "yyyyMMdd") || ''
+          let batas2 = this.datePipe.transform(tglHariIni, "yyyyMMdd") || ''
+          for(let content of this.contents){
+            const tanggal = this.datePipe.transform(content.tglPost, "yyyyMMdd") || ''
+            if(tanggal >= batas && tanggal <= batas2){
+              filterTgl.push(content)
+            }
+          }
+          // this.contents = this.contents.filter(data => (data.tglPost >= batasTgl) && (data.tglPost <= tglHariIni))
         } else if (selectedTgl == 'tahunIni'){
           var d = new Date();
           d.setFullYear(tglHariIni.getFullYear());
           d.setMonth(0);
           d.setDate(1);
           batasTgl = d
-          batasTgl.setHours(0,0,0)
-          this.contents = this.contents.filter(data => ((data.tglPost).setHours(0,0,0) >= batasTgl) && ((data.tglPost).setHours(0,0,0) <= tglHariIni))
+          let batas = this.datePipe.transform(batasTgl, "yyyyMMdd") || ''
+          let batas2 = this.datePipe.transform(tglHariIni, "yyyyMMdd") || ''
+          for(let content of this.contents){
+            const tanggal = this.datePipe.transform(content.tglPost, "yyyyMMdd") || ''
+            if(tanggal >= batas && tanggal <= batas2){
+              filterTgl.push(content)
+            }
+          }
+          // this.contents = this.contents.filter(data => (data.tglPost >= batasTgl) && (data.tglPost <= tglHariIni))
         } else if (selectedTgl == 'hariIni'){
-          batasTgl = new Date()
-          batasTgl.setHours(0,0,0)
-          this.contents = this.contents.filter(data => (data.tglPost).setHours(0,0,0) === batasTgl)
+          let batas = this.datePipe.transform(tglHariIni, "yyyyMMdd")
+          for(let content of this.contents){
+            const tanggal = this.datePipe.transform(content.tglPost, "yyyyMMdd")
+            if(tanggal == batas){
+              filterTgl.push(content)
+            }
+          }
+          // this.contents = this.contents.filter(data => data.tglPost.setHours(0,0,0,0) == batasTgl)
+          
         }
+        this.contents = filterTgl
+        console.log('tglHariIni',tglHariIni)
       }
     }
     if(filter){
       this.contents = this.contents.filter(data => data.judul.includes(filter.toUpperCase()))
     }
+    if(this.contents.length == 0){
+      console.log('kosong')
+      this.dataKosong = true
+      console.log(this.dataKosong)
+    }
+    console.log(this.dataKosong)
   }
 
   cari(){
@@ -96,6 +134,17 @@ export class MainPageComponent implements OnInit {
     this.selectedFilter = this.selectedFilter.code
     
     this.populateList(this.selectedFilter,'')
+  }
+
+  viewPage(content: any){
+    console.log(content)
+    const formParams = new Map();
+    formParams.set('selectedData', content)
+    this.navigateTo('main/view', formParams);
+  }
+
+  navigateTo(url: string, data: any) {
+    this.router.navigateByUrl(url, { state: { data } });
   }
 
 }

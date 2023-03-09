@@ -21,12 +21,16 @@
         <div *ngIf="selectedFilter">
             <h4>Data difilter berdasarkan {{ketFilter}}</h4>
         </div>
+        <p-card [style]="{'width': '100%'}" *ngIf="dataKosong">
+            <div>
+                <h4>Tidak Ada Postingan.</h4>
+            </div>
+        </p-card>
         <p-card [style]="{'width': '100%', 'margin-bottom': '2em'}" *ngFor="let content of contents"
             [header]="content.judul">
             <div>
                 {{(readMore) ? content.isi : content.isi | slice:0:100}} <span *ngIf="!readMore">...</span> <br>
-                <a *ngIf="!readMore" (click)="readMore=true" style="color: blue;">[Read More]</a>
-                <a *ngIf="readMore" (click)="readMore=false" style="color: blue;">[Read Less]</a>
+                <a *ngIf="!readMore" (click)="viewPage(content)" style="color: blue;">[Read More]</a>
             </div>
         </p-card>
     </p-panel>

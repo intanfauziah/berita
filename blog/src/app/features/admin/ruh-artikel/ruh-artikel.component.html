@@ -11,7 +11,7 @@
                             </div>
                             <div class="ui-g-2">
                                 <input id="input" type="text" size="30" pInputText formControlName="judul"
-                                    maxlength="50" oninput="this.value = this.value.toUpperCase()"/>
+                                    maxlength="50" oninput="this.value = this.value.toUpperCase()" />
                             </div>
                             <div class="ui-g-4">
                                 <p-message severity="error" text="Judul harus diisi!"
@@ -23,11 +23,21 @@
                                 Kategori
                             </div>
                             <div class="ui-g-4">
-                                <p-dropdown placeholder="Pilih Kategori" [options]="jenisKategori" [style]="{'width':'140px'}" formControlName="kategori" ></p-dropdown>
+                                <p-dropdown placeholder="Pilih Kategori" [options]="jenisKategori"
+                                    [style]="{'size':'30'}" formControlName="kategori"></p-dropdown>
                             </div>
                             <div class="ui-g-4">
                                 <p-message severity="error" text="Kategori harus diisi"
                                     *ngIf="!ruhForm.controls['kategori'].valid && ruhForm.controls['kategori'].dirty"></p-message>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-2">
+                                URL Gambar
+                            </div>
+                            <div class="ui-g-4">
+                                <input id="input" type="text" size="30" pInputText formControlName="gambar"/>
+                                <!-- <p-fileUpload #fubauto mode="basic" name="demo[]" accept="image/*" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload> -->
                             </div>
                         </div>
                         <div>
@@ -36,15 +46,15 @@
                                     Isi
                                 </div>
                             </div>
-                            <div class="ui-g-12">
-                                <div class="ui-g-4">
-                                    <textarea rows="5" cols="60" pInputTextarea [autoResize]="true"
-                                    id="input" type="text" formControlName="isi"></textarea>
-                                </div>
-                                <div class="ui-g-4">
-                                    <p-message severity="error" text="Isi harus diisi"
-                                        *ngIf="!ruhForm.controls['isi'].valid && ruhForm.controls['isi'].dirty"></p-message>
-                                </div>
+                            <div class="ui-g-4">
+                                <textarea rows="5" cols="60" pInputTextarea [autoResize]="true" id="input" type="text"
+                                    formControlName="isi"></textarea>
+                                <!-- <p-editor formControlName="isi" [style]="{ height: '120px' }"></p-editor>
+                                    <p>Value: {{isi||'empty'}}</p> -->
+                            </div>
+                            <div class="ui-g-4">
+                                <p-message severity="error" text="Isi harus diisi"
+                                    *ngIf="!ruhForm.controls['isi'].valid && ruhForm.controls['isi'].dirty"></p-message>
                             </div>
                         </div>
                     </div>
@@ -52,11 +62,12 @@
             </form>
             <div class="p-grid" style="margin-top:10px">
                 <div class="p-col-12 p-sm-12 p-md-12 p-lg-12" style="text-align: right">
-                  <button *ngIf="visibleSimpan" pButton type="button" label="Simpan" icon="pi pi-save" (click)="simpan()"></button> &nbsp;
-                  <button *ngIf="visibleBatal" pButton type="button" label="Batal" (click)="batal()"></button> &nbsp;
-                  <button pButton type="button" label="Keluar" (click)="keluar()"></button>
+                    <button *ngIf="visibleSimpan" pButton type="button" label="Simpan" icon="pi pi-save"
+                        (click)="simpan()"></button> &nbsp;
+                    <button *ngIf="visibleBatal" pButton type="button" label="Batal" (click)="batal()"></button> &nbsp;
+                    <button pButton type="button" label="Keluar" (click)="keluar()"></button>
                 </div>
-              </div>
+            </div>
         </p-panel>
     </div>
 </div>
@@ -65,11 +76,11 @@
     <p-messages key="main-message"></p-messages>
     <p-toast position="top-right" key="main-toast"></p-toast>
     <p-confirmDialog acceptLabel="Ya" rejectLabel="Tidak" icon="pi pi-exclamation-triangle"
-      key="noncloseable-confirm-dialog" [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+        key="noncloseable-confirm-dialog" [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
     <p-confirmDialog acceptLabel="Ya" rejectLabel="Tidak" icon="pi pi-exclamation-triangle" key="main-confirm-dialog"
-      [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+        [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
     <p-confirmDialog acceptLabel="Oke" [rejectVisible]="false" icon="pi pi-exclamation-triangle" key="ok-confirm-dialog"
-      [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
+        [closable]="false" [closeOnEscape]="false"></p-confirmDialog>
     <router-outlet></router-outlet>
     <div style="height: 15px">&nbsp;</div>
-  </div>
+</div>
