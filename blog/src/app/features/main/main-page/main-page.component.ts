@@ -147,4 +147,9 @@ export class MainPageComponent implements OnInit {
     this.router.navigateByUrl(url, { state: { data } });
   }
 
+  hapusFilter(){
+    this.selectedFilter = ''
+    this.populateList('','')
+  }
+
 }

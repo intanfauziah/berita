@@ -40,6 +40,7 @@ import {ConfirmationService} from 'primeng/api';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {EditorModule} from 'primeng/editor';
+import {ImageModule} from 'primeng/image';
 @NgModule({
   imports: [
     CommonModule,
@@ -83,6 +84,7 @@ import {EditorModule} from 'primeng/editor';
     ConfirmPopupModule,
     CascadeSelectModule,
     EditorModule,
+    ImageModule,
   ],
   exports: [
     ButtonModule,
@@ -125,6 +127,7 @@ import {EditorModule} from 'primeng/editor';
     ConfirmPopupModule,
     CascadeSelectModule,
     EditorModule,
+    ImageModule,
   ],
   declarations: []
 })

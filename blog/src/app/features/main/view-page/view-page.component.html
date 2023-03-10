@@ -6,6 +6,9 @@
                 <h5>Tgl Post: {{cont.tglPost | date: 'dd-MM-yyyy'}}</h5>
             </div>
             <br>
+            <div *ngIf="cont.gambar">
+                <p-image src={{cont.gambar}} alt="Image" width="250"></p-image>
+            </div>
             <div>
                 {{cont.isi}}
             </div>

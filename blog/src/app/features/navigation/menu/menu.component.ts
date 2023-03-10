@@ -17,12 +17,12 @@ export class MenuComponent implements OnInit {
     this.items = [
       {
           label: 'Home',
-          // icon: 'pi pi-home',
+          icon: 'pi pi-home',
           routerLink: '/main'
       },
       {
           label: 'Admin',
-          // icon: 'pi pi-user',
+          icon: 'pi pi-user',
           routerLink: '/admin'
       }
   ];

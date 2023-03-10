@@ -10,7 +10,7 @@
                                 Judul
                             </div>
                             <div class="ui-g-2">
-                                <input id="input" type="text" size="30" pInputText formControlName="judul"
+                                <input id="input" type="text" size="85" pInputText formControlName="judul"
                                     maxlength="50" oninput="this.value = this.value.toUpperCase()" />
                             </div>
                             <div class="ui-g-4">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="ui-g-4">
                                 <p-dropdown placeholder="Pilih Kategori" [options]="jenisKategori"
-                                    [style]="{'size':'30'}" formControlName="kategori"></p-dropdown>
+                                    [style]="{'size':'60'}" formControlName="kategori"></p-dropdown>
                             </div>
                             <div class="ui-g-4">
                                 <p-message severity="error" text="Kategori harus diisi"
@@ -36,7 +36,7 @@
                                 URL Gambar
                             </div>
                             <div class="ui-g-4">
-                                <input id="input" type="text" size="30" pInputText formControlName="gambar"/>
+                                <input id="input" type="text" size="85" pInputText formControlName="gambar"/>
                                 <!-- <p-fileUpload #fubauto mode="basic" name="demo[]" accept="image/*" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload> -->
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="ui-g-4">
-                                <textarea rows="5" cols="60" pInputTextarea [autoResize]="true" id="input" type="text"
+                                <textarea rows="5" cols="110" pInputTextarea [autoResize]="true" id="input" type="text"
                                     formControlName="isi"></textarea>
                                 <!-- <p-editor formControlName="isi" [style]="{ height: '120px' }"></p-editor>
                                     <p>Value: {{isi||'empty'}}</p> -->

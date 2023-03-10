@@ -50,7 +50,8 @@ export class RuhArtikelComponent implements OnInit {
       this.ruhForm.patchValue({
         judul: selectedData.judul,
         kategori: selectedData.kategori,
-        isi: selectedData.isi
+        isi: selectedData.isi,
+        gambar: selectedData.gambar
       });
     }
     this.visibleSimpan = true;
@@ -127,13 +128,15 @@ export class RuhArtikelComponent implements OnInit {
       this.ruhForm.patchValue({
         judul: selectedData.judul,
         kategori: selectedData.kategori,
-        isi: selectedData.isi
+        isi: selectedData.isi,
+        gambar: selectedData.gambar
       });
     } else {
       this.ruhForm.patchValue({
         judul: '',
         kategori: '',
-        isi: ''
+        isi: '',
+        gambar: ''
       });
     }
   }
